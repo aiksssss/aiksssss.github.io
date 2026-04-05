@@ -4,140 +4,207 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AIKSSSSS</title>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300&family=Cormorant+Garamond:wght@200;300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     min-height: 100vh;
-    background: linear-gradient(135deg, #f0ede8 0%, #e8e3db 25%, #ddd7cc 50%, #e4dfd7 75%, #ece8e2 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
+    background: linear-gradient(160deg, #f0ede8 0%, #e4dfd7 40%, #ddd7cc 70%, #ece8e2 100%);
+    font-family: 'Josefin Sans', sans-serif;
+    overflow-x: hidden;
+    color: #7a7068;
   }
 
-  /* Subtle texture overlay */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     background:
-      radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.4) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 20%, rgba(200,190,176,0.3) 0%, transparent 50%),
-      radial-gradient(ellipse at 60% 80%, rgba(180,170,158,0.2) 0%, transparent 50%);
+      radial-gradient(ellipse at 15% 50%, rgba(255,255,255,0.5) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 20%, rgba(200,190,176,0.25) 0%, transparent 50%);
     pointer-events: none;
+    z-index: 0;
   }
 
-  /* Nav */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 32px 52px;
-    z-index: 10;
+    padding: 30px 52px;
+    z-index: 100;
   }
 
   .nav-logo {
-    font-family: 'Josefin Sans', sans-serif;
     font-weight: 100;
-    font-size: 13px;
-    letter-spacing: 0.45em;
+    font-size: 12px;
+    letter-spacing: 0.5em;
     color: #9a9088;
     text-transform: uppercase;
   }
 
-  .nav-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
+  .nav-right {
+    font-weight: 100;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: #b0a898;
+    text-transform: uppercase;
   }
 
-  .nav-menu span {
-    display: block;
-    width: 24px;
-    height: 1px;
-    background: #9a9088;
-  }
-
-  /* Main name */
-  .main {
+  .hero {
     position: relative;
-    z-index: 2;
-    text-align: center;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0;
+    padding-top: 110px;
+    padding-bottom: 32px;
   }
 
   .name {
-    font-family: 'Josefin Sans', sans-serif;
     font-weight: 100;
-    font-size: clamp(52px, 12vw, 148px);
-    letter-spacing: 0.38em;
+    font-size: clamp(36px, 9vw, 110px);
+    letter-spacing: 0.42em;
     text-transform: uppercase;
     color: transparent;
-    background: linear-gradient(
-      180deg,
-      #b8b0a4 0%,
-      #9a9088 30%,
-      #7a7068 60%,
-      #c4bdb4 100%
-    );
+    background: linear-gradient(180deg, #c0b8ae 0%, #8a8078 40%, #6a6058 70%, #b8b0a4 100%);
     -webkit-background-clip: text;
     background-clip: text;
-    line-height: 1;
     opacity: 0;
-    animation: revealName 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    animation: fadeUp 1.6s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
     user-select: none;
+    text-align: center;
   }
 
   .tagline {
-    font-family: 'Josefin Sans', sans-serif;
     font-weight: 100;
-    font-size: clamp(8px, 1.2vw, 12px);
-    letter-spacing: 0.55em;
+    font-size: clamp(8px, 1.1vw, 11px);
+    letter-spacing: 0.5em;
     text-transform: uppercase;
+    color: #b8b0a4;
+    margin-top: 16px;
+    opacity: 0;
+    animation: fadeUp 1s ease 1s forwards;
+  }
+
+  .carousel-section {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 0 100px;
+  }
+
+  .carousel-label {
+    font-weight: 100;
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: #c0b8ae;
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.3s forwards;
+  }
+
+  .scene {
+    width: 100%;
+    height: 500px;
+    perspective: 1100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.5s forwards;
+  }
+
+  .carousel {
+    width: 190px;
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+
+  .card {
+    position: absolute;
+    width: 190px;
+    height: 400px;
+    border-radius: 1px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
+                opacity 0.7s ease,
+                box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  }
+
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .card:hover img { transform: scale(1.04); }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    margin-top: 40px;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.8s forwards;
+  }
+
+  .btn {
+    width: 38px;
+    height: 38px;
+    border: 1px solid #c0b8ae;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    color: #9a9088;
+    font-size: 15px;
+    font-family: inherit;
+  }
+
+  .btn:hover {
+    border-color: #7a7068;
+    background: rgba(122,112,104,0.08);
+    color: #5a5048;
+  }
+
+  .counter {
+    font-weight: 100;
+    font-size: 10px;
+    letter-spacing: 0.35em;
     color: #b0a898;
-    margin-top: 28px;
-    opacity: 0;
-    animation: revealName 1.2s ease 1.2s forwards;
+    min-width: 44px;
+    text-align: center;
   }
 
-  /* Decorative lines */
-  .line-left, .line-right {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    background: linear-gradient(180deg, transparent, #c4bdb4 40%, #c4bdb4 60%, transparent);
-    opacity: 0;
-    animation: revealName 1.2s ease 1.4s forwards;
-  }
-  .line-left { left: 52px; height: 180px; }
-  .line-right { right: 52px; height: 180px; }
-
-  /* Bottom bar */
-  .bottom {
+  footer {
     position: fixed;
     bottom: 0; left: 0; right: 0;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    padding: 32px 52px;
-    z-index: 10;
-    opacity: 0;
-    animation: revealName 1s ease 1.6s forwards;
+    align-items: center;
+    padding: 26px 52px;
+    z-index: 100;
   }
 
-  .bottom-link {
-    font-family: 'Josefin Sans', sans-serif;
+  .footer-link {
     font-weight: 100;
     font-size: 10px;
     letter-spacing: 0.4em;
@@ -146,29 +213,26 @@
     text-decoration: none;
     transition: color 0.3s;
   }
-  .bottom-link:hover { color: #7a7068; }
 
-  .bottom-center {
-    font-family: 'Josefin Sans', sans-serif;
+  .footer-link:hover { color: #6a6058; }
+
+  .footer-copy {
     font-weight: 100;
     font-size: 9px;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
+    letter-spacing: 0.3em;
     color: #c8c0b4;
   }
 
-  /* Animations */
-  @keyframes revealName {
-    from { opacity: 0; transform: translateY(12px); }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Mobile */
   @media (max-width: 600px) {
-    nav { padding: 24px 28px; }
-    .line-left, .line-right { display: none; }
-    .bottom { padding: 24px 28px; }
-    .name { letter-spacing: 0.2em; }
+    nav, footer { padding: 20px 24px; }
+    .name { letter-spacing: 0.18em; }
+    .scene { height: 420px; }
+    .carousel, .card { width: 160px; height: 340px; }
   }
 </style>
 </head>
@@ -176,25 +240,80 @@
 
 <nav>
   <div class="nav-logo">Portfolio</div>
-  <div class="nav-menu">
-    <span></span>
-    <span></span>
-  </div>
+  <div class="nav-right">2025</div>
 </nav>
 
-<div class="line-left"></div>
-<div class="line-right"></div>
+<main>
+  <div class="hero">
+    <div class="name">AIKSSSSS</div>
+    <div class="tagline">Model · Fashion · Editorial</div>
+  </div>
 
-<main class="main">
-  <div class="name">AIKSSSSS</div>
-  <div class="tagline">Visual · Creative · Design</div>
+  <div class="carousel-section">
+    <div class="carousel-label">Selected Work</div>
+    <div class="scene">
+      <div class="carousel" id="carousel">
+        <div class="card"><img src="img/1.jpg" alt="Look 1"></div>
+        <div class="card"><img src="img/2.jpg" alt="Look 2"></div>
+        <div class="card"><img src="img/3.jpg" alt="Look 3"></div>
+        <div class="card"><img src="img/4.jpg" alt="Look 4"></div>
+        <div class="card"><img src="img/5.jpg" alt="Look 5"></div>
+        <div class="card"><img src="img/6.jpg" alt="Look 6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn" id="prev">&#8592;</button>
+      <div class="counter" id="counter">1 / 6</div>
+      <button class="btn" id="next">&#8594;</button>
+    </div>
+  </div>
 </main>
 
-<div class="bottom">
-  <a href="https://instagram.com/ai.ksssss" class="bottom-link" target="_blank">Instagram</a>
-  <div class="bottom-center">© 2025</div>
-  <a href="https://t.me/ai.ksssss" class="bottom-link" target="_blank">Telegram</a>
-</div>
+<footer>
+  <a href="https://instagram.com/ai.ksssss" class="footer-link" target="_blank">Instagram</a>
+  <div class="footer-copy">© 2025</div>
+  <a href="https://t.me/ai.ksssss" class="footer-link" target="_blank">Telegram</a>
+</footer>
 
+<script>
+  const carousel = document.getElementById('carousel');
+  const cards = Array.from(carousel.querySelectorAll('.card'));
+  const counter = document.getElementById('counter');
+  const total = cards.length;
+  const angleStep = 360 / total;
+  const radius = 300;
+  let current = 0;
+
+  function update() {
+    cards.forEach((card, i) => {
+      const angle = ((i - current) * angleStep) * (Math.PI / 180);
+      const x = Math.sin(angle) * radius;
+      const z = Math.cos(angle) * radius - radius;
+      const cosA = Math.cos(angle);
+      const scale = 0.6 + 0.4 * ((cosA + 1) / 2);
+      const opacity = 0.3 + 0.7 * ((cosA + 1) / 2);
+      const zIndex = Math.round(100 * ((cosA + 1) / 2));
+
+      card.style.transform = `translateX(${x}px) translateZ(${z}px) scale(${scale})`;
+      card.style.opacity = opacity;
+      card.style.zIndex = zIndex;
+      card.style.pointerEvents = i === ((current % total + total) % total) ? 'auto' : 'none';
+    });
+    const idx = ((current % total) + total) % total;
+    counter.textContent = `${idx + 1} / ${total}`;
+  }
+
+  document.getElementById('next').addEventListener('click', () => { current++; update(); });
+  document.getElementById('prev').addEventListener('click', () => { current--; update(); });
+
+  let startX = 0;
+  carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+  carousel.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { diff > 0 ? current++ : current--; update(); }
+  });
+
+  update();
+</script>
 </body>
 </html>
