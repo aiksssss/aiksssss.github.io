@@ -166,6 +166,31 @@
     if (Math.abs(diff) > 40) { diff > 0 ? current++ : current--; update(); }
   });
   update();
+
+  // Lightbox
+  const lightbox = document.createElement('div');
+  lightbox.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;display:none;align-items:center;justify-content:center;cursor:zoom-out;backdrop-filter:blur(8px);';
+  const lbImg = document.createElement('img');
+  lbImg.style.cssText = 'max-height:90vh;max-width:90vw;object-fit:contain;border-radius:2px;transform:scale(0.9);opacity:0;transition:transform 0.3s ease,opacity 0.3s ease;';
+  lightbox.appendChild(lbImg);
+  document.body.appendChild(lightbox);
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const idx = ((current % total) + total) % total;
+      const activeCard = cards[idx];
+      if (card !== activeCard) return;
+      lbImg.src = card.querySelector('img').src;
+      lightbox.style.display = 'flex';
+      setTimeout(() => { lbImg.style.transform = 'scale(1)'; lbImg.style.opacity = '1'; }, 10);
+    });
+  });
+
+  lightbox.addEventListener('click', () => {
+    lbImg.style.transform = 'scale(0.9)';
+    lbImg.style.opacity = '0';
+    setTimeout(() => { lightbox.style.display = 'none'; }, 300);
+  });
 </script>
 </body>
 </html>
