@@ -256,7 +256,7 @@ nav {
 /* Album Hero — video cover */
 .album-hero {
   position: relative;
-  height: 90vh;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -294,14 +294,15 @@ nav {
 
 .album-title {
   font-family: 'Syne', sans-serif; font-weight: 800;
-  font-size: clamp(56px, 10vw, 120px);
+  font-size: clamp(72px, 13vw, 160px);
   line-height: 0.85; letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
 .album-title .outline {
   display: block; color: transparent;
-  -webkit-text-stroke: 2px rgba(200,212,224,0.6);
+  -webkit-text-stroke: 2.5px rgba(220,230,255,0.9);
+  text-shadow: 0 0 30px rgba(180,200,255,0.5), 0 0 60px rgba(160,180,255,0.3);
 }
 
 .album-meta {
@@ -471,7 +472,7 @@ footer {
 .lightbox.active { display: flex; }
 
 .lightbox img {
-  max-height: 90vh; max-width: 88vw;
+  max-height: 100vh; max-width: 88vw;
   object-fit: contain;
   animation: lbIn 0.3s ease;
   border: 1px solid var(--border);
