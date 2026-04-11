@@ -528,16 +528,68 @@ footer {
 
 /* Mobile */
 @media (max-width: 768px) {
-  nav { padding: 16px 24px; }
+  nav { padding: 14px 20px; }
   .nav-links { display: none; }
-  .hero-content, .about, .contacts { padding: 80px 24px; }
-  .about, .contacts { grid-template-columns: 1fr; }
-  .about-right { height: 340px; }
-  .album-hero-content, .album-top { padding: 24px; }
-  .grid-header { padding: 28px 24px; }
-  .photo-grid { grid-template-columns: repeat(2, 1fr); }
-  .photo-card:nth-child(1) { grid-column: span 2; min-height: 320px; }
-  footer { padding: 16px 24px; }
+  .nav-logo { font-size: 12px; }
+
+  /* Hero */
+  .hero-content { padding: 0 20px; }
+  .hero-tag { font-size: 9px; letter-spacing: 0.3em; margin-bottom: 16px; }
+  .hero-name { font-size: clamp(52px, 18vw, 90px); }
+  .hero-sub { font-size: 9px; letter-spacing: 0.2em; margin-top: 20px; }
+  .hero-scroll { bottom: 24px; }
+
+  /* About */
+  .about { padding: 64px 20px; display: block; }
+  .about-title { font-size: clamp(40px, 14vw, 64px); margin-bottom: 20px; }
+  .about-desc { font-size: 14px; line-height: 1.7; margin-bottom: 28px; }
+  .about-tags { gap: 8px; }
+  .tag { font-size: 8px; padding: 6px 12px; }
+
+  /* Album */
+  .album-hero { height: 100svh; }
+  .album-top { padding: 16px 20px; }
+  .album-top-tag { font-size: 8px; letter-spacing: 0.2em; }
+  .album-hero-content { padding: 20px; justify-content: center; }
+  .album-tag { font-size: 9px; letter-spacing: 0.3em; margin-bottom: 12px; }
+  .album-title { font-size: clamp(56px, 18vw, 100px); }
+  .album-title .outline { -webkit-text-stroke: 1.5px rgba(220,230,255,0.9); }
+  .album-meta { gap: 16px; margin-top: 20px; flex-wrap: wrap; }
+  .album-count { font-size: 9px; }
+  .scroll-btn { font-size: 9px; }
+
+  /* Grid */
+  .grid-header { padding: 20px; }
+  .grid-label { font-size: 9px; }
+  .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; }
+  .photo-card { aspect-ratio: 3/4; }
+  .photo-card:nth-child(1) { grid-column: span 2; min-height: 280px; aspect-ratio: 4/3; }
+  .card-num { font-size: 9px; }
+
+  /* Contacts */
+  .contacts { padding: 64px 20px; display: block; }
+  .contacts-title { font-size: clamp(40px, 14vw, 64px); margin-bottom: 16px; }
+  .contacts-desc { font-size: 14px; margin-bottom: 40px; }
+  .contact-link { padding: 18px 0; }
+  .contact-name { font-size: 11px; }
+  .contact-handle { font-size: 13px; }
+
+  /* Footer */
+  footer { padding: 16px 20px; }
+  .footer-logo { font-size: 11px; }
+  .footer-copy { font-size: 8px; }
+
+  /* Lightbox */
+  .lb-btn { width: 36px; height: 36px; font-size: 14px; }
+  .lb-prev { left: 8px; }
+  .lb-next { right: 8px; }
+}
+
+/* Small phones */
+@media (max-width: 390px) {
+  .hero-name { font-size: 48px; }
+  .album-title { font-size: 52px; }
+  .photo-card:nth-child(1) { min-height: 220px; }
 }
 </style>
 </head>
