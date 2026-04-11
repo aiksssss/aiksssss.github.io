@@ -625,7 +625,7 @@ footer {
       <div class="album-meta">
         <div class="album-count">13 photographs</div>
         <div class="album-line"></div>
-        <div class="scroll-btn" onclick="document.getElementById('grid').scrollIntoView({behavior:'smooth'})">
+        <div class="scroll-btn" onclick="toggleGrid()">
           View Collection ↓
         </div>
       </div>
@@ -633,7 +633,7 @@ footer {
   </div>
 
   <!-- Photo grid -->
-  <div id="grid">
+  <div id="grid" style="display:none;">
     <div class="grid-header">
       <div class="grid-label">Campaign · Vol.01 — Cold Edit</div>
       <div class="grid-label">13 / 13</div>
@@ -802,6 +802,17 @@ footer {
     if (e.key === 'ArrowLeft') prevLb();
     if (e.key === 'Escape') closeLb();
   });
+
+  // Toggle album grid
+  function toggleGrid() {
+    const grid = document.getElementById('grid');
+    if (grid.style.display === 'none') {
+      grid.style.display = 'block';
+      setTimeout(() => grid.scrollIntoView({behavior: 'smooth'}), 100);
+    } else {
+      grid.style.display = 'none';
+    }
+  }
 
   // Scroll reveal
   const observer = new IntersectionObserver(entries => {
